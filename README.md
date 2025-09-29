@@ -1,86 +1,73 @@
-Members Names:
+# 🍴 Feastly
 
-TL: Ziad Hisham
+**Feastly** is a digital restaurant management system designed to replace paper-based operations with a fast, user-friendly, and efficient workflow.  
 
-Ahmed Khaled Ahmed
+It provides:  
+- 📑 Simple sales page  
+- 🍽️ Digital menu  
+- 📦 Automated inventory tracking  
+- 💳 Payment integration (cash & card)  
+- 📊 Manager dashboard with sales insights & stock alerts  
 
-Ahmed Mohamed Salah
+---
 
-Beshoy Labib Ezzat
+## 🎯 Objective
+Enhance restaurant efficiency, reduce errors, and increase profitability by digitalizing all operations in a seamless and smart way.
 
-Youssef Ebraam Melad
+---
 
-Project Name:
-Feastly
+## 👨‍💻 Team Members
+- **TL:** Ziad Hisham  
+- Ahmed Khaled Ahmed  
+- Ahmed Mohamed Salah  
+- Beshoy Labib Ezzat  
+- Youssef Ebraam Melad  
 
-Description:
-Feastly is a digital restaurant management system designed to replace paper-based operations with a fast, user-friendly, and efficient workflow. It features a simple sales page, digital menu, automated inventory tracking, payment integration (cash & card), and a manager dashboard with sales insights and stock alerts.
+---
 
-Objective:
-To enhance restaurant efficiency, reduce errors, and increase profitability by digitalizing all operations in a seamless and smart way.
+## 🛠️ Technology Stack
+**Frontend:** React, Bootstrap  
+**Backend:** Node.js, Express.js  
+**Database:** MongoDB  
 
-Technology used:
+---
 
-Frontend: React, Bootstrap
+## 📅 Project Plan & Timeline
 
-Backend: Node.js, Express.js
+### **Week 1 – Setup & Design**
+- Define requirements & finalize features  
+- Create UI/UX wireframes & style guide  
+- Setup project repos & folder structures  
+- Backend: Initialize Express server & connect MongoDB  
+- Frontend: Initialize React app with routing  
 
-Database: MongoDB
+### **Week 2 – Core Features Development**
+- Frontend: Sales page, digital menu, cart system  
+- Backend: Menu APIs, order APIs, inventory update logic  
+- Connect frontend with backend using REST APIs  
 
+### **Week 3 – Payments & Dashboard**
+- Integrate payment options  
+- Backend: Authentication & manager role  
+- Frontend: Manager dashboard  
+- Backend: Stock alert endpoint & sales reporting  
 
-Project plan & timeline:
+### **Week 4 – Testing & Deployment**
+- Bug fixing & UI/UX polishing  
+- Testing (unit & integration)  
+- Deploy backend & frontend  
+- Prepare final documentation & demo script  
 
+---
 
-Week 1 – Setup & Design
+## 👥 Tasks Distribution & Roles
+- **UI/UX & Documentation:** Youssef Ebraam  
+- **Frontend (React + Bootstrap):** Ahmed Mohamed, Ziad Hisham  
+- **Backend (Node.js + Express + MongoDB):** Ahmed Khaled, Beshoy Labib  
 
--Define requirements & finalize features .
+---
 
--UI/UX wireframes and style guide .
+## 🚀 Getting Started (Coming Soon)
+Instructions for setup, installation, and usage will be added after deployment.
 
--Setup project repos & folder structures.
-
--Backend: Initialize Express server & connect MongoDB.
-
--Frontend: Initialize React app with routing.
-
-
-Week 2 – Core Features Development
-
--Frontend: Sales page, digital menu, cart system.
-
--Backend: Menu APIs, order APIs, inventory update logic.
-
--Connect frontend with backend using REST APIs.
-
-
-Week 3 – Payments & Dashboard
-
--Integrate payment options .
-
--Backend: Authentication & manager role.
-
--Frontend: Manager dashboard .
-
--Backend: Stock alert endpoint & sales reporting.
-
-
-Week 4 – Testing & Deployment
-
--Bug fixing & polishing UI/UX.
-
--testing.
-
--Deploy backend & frontend .
-
--Prepare final documentation & demo script.
-
-
-
-Tasks distribution & members rules:
-
--UI/UX and documentation -> Youssef Ebraam 
-                                                            
--Frontend(React + Bootstrap ) -> Ahmed Mohammed , Zeyad Hisham
-                                                             
--Backend(Node.js + Express + MongoDB ) -> Ahmed Khaled , Beshoy Labib
-
+---
