@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/3abqar/feastly/blob/main/public/food.png" alt="Feastly Logo" width="120"/>
+</p>
+
 # 🍴 Feastly
 
 **Feastly** is a digital restaurant management system designed to replace paper-based operations with a fast, user-friendly, and efficient workflow.  
@@ -40,6 +44,8 @@ Enhance restaurant efficiency, reduce errors, and increase profitability by digi
 - Setup project repos & folder structures  
 - Backend: Initialize Express server & connect MongoDB  
 - Frontend: Initialize React app with routing  
+
+🎨 **UI/UX Files:** [View Figma & PDF designs here](https://github.com/3abqar/feastly/tree/main/UI-UX)
 
 ### **Week 2 – Core Features Development**
 - Frontend: Sales page, digital menu, cart system  
