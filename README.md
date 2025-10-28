@@ -1,10 +1,11 @@
-<p align="center"><img src="https://github.com/3abqar/abqar-store-sales/blob/main/public/logo.png" alt="Abqar Store Logo" width="120"/></p>
+<p align="center"><img src="https://github.com/3abqar/feastly/blob/main/image_fx_.jpg" alt="Abqar Store Logo" width="120"/></p>
 
 # 🛍️ Abqar Store Sales
 
 **Abqar Store Sales** is a comprehensive digital sales management system designed to replace traditional paper-based operations with a fast, user-friendly, and efficient workflow for retail stores.
 
 It provides:
+
 - 📊 Real-time sales dashboard with analytics
 - 💰 Complete sales entry and tracking system
 - 👥 Customer database with loyalty points
@@ -26,7 +27,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 - **TL:** Ziad Hisham
 - Ahmed Khaled Ahmed
 - Ahmed Mohamed Salah
-- Beshoy Labib Ezzat
+- Bishoy Labib Ezzat
 - Youssef Ebraam Melad
 
 ---
@@ -34,7 +35,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 ## 🛠️ Technology Stack
 
 **Frontend:** HTML5, CSS3, JavaScript (Vanilla), TailwindCSS
-**Backend:** Firebase (Firestore, Authentication)
+**Backend:** Firebase
 **Charts:** Chart.js
 **PDF Generation:** PDFMake
 **Icons:** Heroicons
@@ -44,6 +45,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 ## 📅 Project Plan & Timeline
 
 ### **Week 1 – Setup & Design**
+
 - Define requirements & finalize features
 - Create UI/UX wireframes & style guide
 - Setup project structure & Firebase configuration
@@ -51,6 +53,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 - Setup multi-language support system
 
 ### **Week 2 – Core Features Development**
+
 - Sales entry system with real-time validation
 - Customer database with CRUD operations
 - Firebase integration for data persistence
@@ -58,6 +61,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 - Service catalog management
 
 ### **Week 3 – Advanced Features & Analytics**
+
 - Dashboard analytics with Chart.js
 - Debt management system
 - PDF report generation
@@ -65,6 +69,7 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 - Advanced filtering and search functionality
 
 ### **Week 4 – Testing & Deployment**
+
 - Bug fixing & UI/UX polishing
 - Performance optimization
 - Cross-browser testing
@@ -87,34 +92,38 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 Follow these steps to run the project locally:
 
 ### 1️⃣ Clone the repository
+
 ```bash
 git clone https://github.com/3abqar/abqar-store-sales.git
 cd abqar-store-sales
 ```
 
 ### 2️⃣ Firebase Setup
+
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Enable Firestore Database and Authentication
 3. Update the Firebase configuration in `firebase.js` with your project credentials
 
 ### 3️⃣ Run the application
-```bash
-# Serve the files using a local server (e.g., Live Server in VS Code)
-# Or use Python's built-in server:
-python -m http.server 8000
 
-# Or use Node.js http-server:
-npx http-server
-```
+You can easily run the project using Live Server in VS Code:
+
+1. Open the project folder in VS Code
+2. Right-click on `index.html`
+3. Choose “Open with Live Server”
 
 ### 4️⃣ Access the application
-Open your browser and navigate to `http://localhost:8000` (or the port shown in your terminal)
+
+Your default browser will open automatically.
+If not, go to the address shown by Live Server (usually `http://127.0.0.1:5500`
+).
 
 ---
 
 ## 📱 Features Overview
 
 ### 🏠 Dashboard
+
 - Real-time sales metrics and KPIs
 - Interactive charts showing sales trends
 - Daily goal tracking with progress indicators
@@ -122,6 +131,7 @@ Open your browser and navigate to `http://localhost:8000` (or the port shown in 
 - Recent activity feed
 
 ### 💼 Sales Management
+
 - Quick sales entry with service selection
 - Customer auto-complete and suggestions
 - Profit calculation and payment status tracking
@@ -129,6 +139,7 @@ Open your browser and navigate to `http://localhost:8000` (or the port shown in 
 - Advanced filtering by date, service, and customer
 
 ### 👥 Customer Management
+
 - Comprehensive customer database
 - Loyalty points system with tier levels
 - Customer tags and notes
@@ -136,12 +147,14 @@ Open your browser and navigate to `http://localhost:8000` (or the port shown in 
 - Automated customer insights
 
 ### 💳 Debt Management
+
 - Track unpaid orders
 - Mark orders as paid
 - Customer debt overview
 - Payment reminders and notifications
 
 ### 📊 Reports & Analytics
+
 - Profit & Loss reports
 - Service profitability analysis
 - Customer behavior insights
@@ -149,6 +162,7 @@ Open your browser and navigate to `http://localhost:8000` (or the port shown in 
 - WhatsApp marketing tools
 
 ### 🛍️ Service Catalog
+
 - Digital service catalog
 - Category-based organization
 - Discount mode for bulk selections
@@ -171,6 +185,7 @@ Open your browser and navigate to `http://localhost:8000` (or the port shown in 
 ## 🔧 Configuration
 
 ### Firebase Configuration
+
 Update the `firebaseConfig` object in `firebase.js` with your Firebase project credentials:
 
 ```javascript
@@ -180,11 +195,12 @@ const firebaseConfig = {
   projectId: "your-project-id",
   storageBucket: "your-project.appspot.com",
   messagingSenderId: "your-sender-id",
-  appId: "your-app-id"
+  appId: "your-app-id",
 };
 ```
 
 ### Firestore Security Rules
+
 ```javascript
 rules_version = '2';
 service cloud.firestore {
@@ -210,26 +226,8 @@ service cloud.firestore {
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 📞 Support
 
 For support and questions, please contact the development team or create an issue in the GitHub repository.
 
 ---
-
-**Made with ❤️ by the 3abqar Team**
