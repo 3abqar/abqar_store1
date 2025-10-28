@@ -1,0 +1,1718 @@
+/* ============================================
+  Custom CSS for Digital Sales Tracker
+  ============================================
+*/
+
+/* 1. CSS Variables (Root)
+  ------------------------------------
+*/
+:root {
+  --primary: #8a63d2;
+  /* بنفسجي جديد يتناسب مع التصميم */
+  --primary-light: #4a90e2;
+  /* أزرق للوضع الأبيض */
+  --accent: #7ed321;
+  --text: #1f2937;
+  /* Default text color for Light Mode */
+  --dark-text: #f3f4f6;
+  /* Text color for Dark Mode */
+  --light-bg-start: #f5f7fa;
+  --light-bg-end: #c3cfe2;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+  --border-radius-full: 9999px;
+
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-timing-function: ease-in-out;
+  --transition-smooth: all var(--transition-duration) var(--transition-timing-function);
+
+}
+
+/* 2. Body and Font Styles
+  ------------------------------------
+*/
+/* Universal Transitions & Active States */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+button:active,
+.control-btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  color: var(--text);
+  background: linear-gradient(170deg, var(--light-bg-start) 0%, var(--light-bg-end) 100%);
+  transition: background-color 0.5s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+select {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* 3. Header and Logo Styling
+  ------------------------------------
+*/
+header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo-img {
+  height: 48px;
+  width: 48px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+/* 4. Navigation Link Style
+  ------------------------------------
+*/
+/* الكود الجديد لأزرار التنقل */
+.nav-link {
+  padding: 0.75rem 1rem;
+  border-block-end: 3px solid transparent;
+  transition: var(--transition-smooth);
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  /* سيستخدم هذا الخط ألوانك تلقائياً */
+  background: linear-gradient(to right, var(--primary-light), var(--primary));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover {
+  /* يمكنك تعديل لون الـ hover هنا إذا أردت، أو تركه كما هو */
+  color: var(--primary);
+}
+
+.nav-link:hover::before {
+  transform: translateX(0);
+  /* حركة ظهور الخط */
+}
+
+.nav-link.active {
+  color: var(--primary);
+  /* لون الزر النشط */
+  font-weight: 600;
+  border-block-end-color: var(--primary);
+}
+
+.nav-link.active::before {
+  transform: translateX(0);
+}
+
+/* تنسيقات الوضع المظلم */
+body.dark-mode .nav-link {
+  color: var(--dark-text);
+  border-block-end-color: transparent;
+}
+
+body.dark-mode .nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: 600;
+  border-block-end-color: var(--primary);
+  /* استخدام لونك الأساسي */
+}
+
+/* 5. Card Styling
+  ------------------------------------
+*/
+.stat-card {
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Utility for directional margin in KPI cards */
+.kpi-content {
+  margin-inline-start: 1rem;
+}
+
+/* 6. Form Input Focus Style
+  ------------------------------------
+*/
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-light) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3) !important;
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(138, 99, 210, 0.4) !important;
+}
+
+/* 7. Dark Mode Styles - GLASSMORPHISM DESIGN
+  ------------------------------------
+*/
+.dark-mode {
+  --text: var(--dark-text);
+  background: linear-gradient(135deg, #3a3897 0%, #2c2a72 40%, #1a1a4e 100%);
+}
+
+.dark-mode .stat-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.dark-mode .stat-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dark-mode .bg-white,
+.dark-mode .bg-gray-50 {
+  background-color: transparent !important;
+}
+
+.dark-mode .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .divide-gray-200> :not([hidden])~ :not([hidden]) {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 10. Action Button Styles (Corrected for both modes)
+  ------------------------------------ 
+*/
+.control-btn,
+.edit-btn,
+.delete-btn,
+.details-btn,
+.mark-paid-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-left: 6px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.edit-btn {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+}
+
+.delete-btn {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.details-btn {
+  border-color: #6b7280;
+  color: #6b7280;
+}
+
+.mark-paid-btn {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.edit-btn:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+  color: white;
+}
+
+.details-btn:hover {
+  background-color: #6b7280;
+  color: white;
+}
+
+.mark-paid-btn:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+.dark-mode .edit-btn,
+.dark-mode .delete-btn,
+.dark-mode .details-btn,
+.dark-mode .mark-paid-btn {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: transparent;
+}
+
+.dark-mode .edit-btn {
+  color: var(--primary);
+}
+
+.dark-mode .delete-btn {
+  color: #ff6b6b;
+}
+
+.dark-mode .details-btn {
+  color: #9ca3af;
+}
+
+.dark-mode .mark-paid-btn {
+  color: var(--accent);
+}
+
+.dark-mode .edit-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.dark-mode .delete-btn:hover {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.dark-mode .details-btn:hover {
+  background-color: #9ca3af;
+  color: #1a1a4e;
+}
+
+.dark-mode .mark-paid-btn:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+.vip-badge {
+  background-color: #fbbf24;
+  color: #92400e;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 4px;
+}
+
+.dark-mode .vip-badge {
+  background-color: #92400e;
+  color: #fff;
+}
+
+/* 13. New Dark Mode Toggle Styles
+  ------------------------------------
+*/
+.dark-mode-toggle-container {
+  position: relative;
+}
+
+.dark-mode-toggle-container label {
+  width: 60px;
+  height: 30px;
+  position: relative;
+  display: block;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3), inset 0px -2px 5px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dark-mode-toggle-container label:after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.dark-mode-toggle-container svg {
+  position: absolute;
+  width: 18px;
+  top: 6px;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.dark-mode-toggle-container svg.sun {
+  left: 6px;
+  fill: white;
+}
+
+.dark-mode-toggle-container svg.moon {
+  left: 36px;
+  fill: #7e7e7e;
+}
+
+.dark-mode-toggle-container input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.dark-mode-toggle-container input:checked+label {
+  background: #1a1a4e;
+}
+
+.dark-mode-toggle-container input:checked+label:after {
+  left: 57px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+.dark-mode-toggle-container input:checked+label svg.sun {
+  fill: #7e7e7e;
+}
+
+.dark-mode-toggle-container input:checked+label svg.moon {
+  fill: white;
+}
+
+/* ============================================
+  Styles for Loading Overlay
+  ============================================
+*/
+#loadingOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease-out;
+  background: linear-gradient(135deg, #3a3897 0%, #2c2a72 40%, #1a1a4e 100%);
+}
+
+#loadingOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Styling for new KPI Card Icons */
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  /* Circle shape */
+}
+
+/* Styling for new Activity Feed */
+.activity-item {
+  display: flex;
+  align-items: center;
+}
+
+.activity-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  margin-right: 12px;
+}
+
+/* Audit Log Styles */
+.audit-log {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.audit-log h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.audit-log ul {
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.audit-log li {
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .audit-log {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
+  backdrop-filter: blur(12px);
+}
+
+.dark-mode .audit-log li {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .audit-log {
+    padding: 1rem;
+  }
+}
+
+/* --------------------------------------------
+   Responsive Adjustments for Small Screens
+   -------------------------------------------- */
+@media (max-width: 640px) {
+  header {
+    text-align: center;
+  }
+
+  .logo-img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  nav .nav-link {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .dark-mode nav .nav-link {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================================
+  Final Fix for Text Colors
+  ============================================
+*/
+/* This ensures that any utility classes for text color are overridden in dark mode */
+.dark-mode .text-gray-900,
+.dark-mode .text-gray-800,
+.dark-mode .text-gray-700,
+.dark-mode .text-gray-600,
+.dark-mode .text-gray-500,
+.dark-mode .text-black {
+  color: var(--dark-text) !important;
+}
+
+/* ========================================= */
+/* === Autocomplete Suggestions Styles === */
+/* ========================================= */
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .suggestion-item:hover {
+  background-color: #475569;
+}
+
+/* Sales range buttons */
+.sales-range-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 6px;
+  background: transparent;
+}
+
+.dark-mode .sales-range-btn {
+  border-color: rgba(255, 255, 255, .2);
+  color: var(--dark-text);
+}
+
+.sales-range-btn:hover {
+  background: rgba(0, 0, 0, .05);
+}
+
+.dark-mode .sales-range-btn:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
+/* ========================================= */
+/* === 3D Logo Text Style (Purple Theme) === */
+/* ========================================= */
+.logo-3d {
+  font-family: 'Cairo', sans-serif;
+  /* استخدام خط أكثر أناقة */
+  font-size: 2.5rem;
+  /* 40px */
+  font-weight: 700;
+  color: #c4b5fd;
+  /* لون بنفسجي فاتح للنص الأساسي */
+  letter-spacing: 1px;
+  /* ظل متدرج بدرجات البنفسجي الداكن من موقعك */
+  text-shadow:
+    1px 1px 0px #8a63d2,
+    2px 2px 0px #8a63d2,
+    3px 3px 0px #6d28d9,
+    /* درجة أغمق قليلاً */
+    4px 4px 2px rgba(0, 0, 0, 0.25);
+  /* ظل نهائي ناعم لإعطاء عمق */
+  transition: all 0.2s ease-in-out;
+}
+
+.logo-3d:hover {
+  transform: scale(1.05) rotate(-2deg);
+  /* تأثير حركة بسيط عند مرور الماوس */
+}
+
+/* تعديل للهواتف ليكون حجم الخط مناسباً */
+@media (max-width: 640px) {
+  .logo-3d {
+    font-size: 2rem;
+    /* 32px */
+  }
+}
+
+/* ======= 3D Red Logo ======= */
+.logo-3d {
+  --edge: #e6d3ff;
+  /* لمعة فوقية فاتحة */
+  --base: #c19cff;
+  /* بنفسجي فاتح */
+  --mid: #8c57ff;
+  /* بنفسجي متوسط */
+  --dark: #3f1e86;
+  /* بنفسجي غامق للظل */
+  --shadow: #2a1a57;
+  /* لون سمك/ظل المجسّم */
+  --glow: rgba(124, 77, 255, .35);
+  /* هالة بنفسجية */
+  position: relative;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: .5px;
+  font-size: clamp(28px, 5vw, 56px);
+  line-height: 1;
+
+  /* جسم الحرف بتدرّج أحمر */
+  background: linear-gradient(180deg, var(--edge) 0%, var(--base) 35%, var(--mid) 70%, var(--dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* بروز/عمق (extrusion) بمجموعة ظلال قصيرة */
+  text-shadow:
+    0 .5px 0 var(--mid),
+    0 1px 0 var(--mid),
+    0 1.5px 0 var(--mid),
+    0 2px 0 var(--mid),
+    0 3px 1px rgba(0, 0, 0, .25),
+    0 10px 16px rgba(0, 0, 0, .35);
+
+  /* هالة خارجية خفيفة */
+  filter: drop-shadow(0 8px 24px var(--glow));
+}
+
+/* كتلة 3D سميكة خلف الحروف (يخلق إحساس مجسّم حقيقي) */
+.logo-3d::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: var(--dark);
+  z-index: -1;
+  transform: translate(0.12em, 0.12em) skewX(-8deg);
+  opacity: .95;
+  /* “سمك” المجسّم: ظلال مكدسة */
+  text-shadow:
+    -1px 0 0 var(--dark),
+    -2px 1px 0 var(--dark),
+    -3px 2px 0 var(--dark),
+    -4px 3px 0 var(--dark),
+    -5px 4px 0 var(--dark),
+    -6px 5px 0 var(--dark),
+    -7px 6px 0 var(--dark),
+    -8px 7px 0 var(--dark);
+}
+
+/* لمعة فوقية (جلوس) */
+.logo-3d::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* ماسك يلمع الجزء العلوي */
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .08) 35%, transparent 60%),
+    linear-gradient(to bottom, rgba(255, 255, 255, .25), transparent 40%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: screen;
+}
+
+/* خط خارجي رفيع على الحواف يعطي وضوح أعلى */
+@supports (-webkit-text-stroke: 1px var(--edge)) {
+  .logo-3d {
+    -webkit-text-stroke: .6px rgba(255, 255, 255, .35);
+  }
+}
+
+/* أنيميشن لمعان خفيف عند الهوفر */
+.logo-3d:hover::after {
+  animation: logoShine 1200ms ease-out 1;
+}
+
+@keyframes logoShine {
+  0% {
+    background-position: -150% 0, 0 0;
+  }
+
+  60% {
+    background-position: 50% 0, 0 0;
+  }
+
+  100% {
+    background-position: 150% 0, 0 0;
+  }
+}
+
+/* وضع الداكن: نزود التباين */
+.dark-mode .logo-3d {
+  --glow: rgba(176, 53, 229, 0.55);
+  text-shadow:
+    0 .5px 0 var(--mid),
+    0 1px 0 var(--mid),
+    0 1.5px 0 var(--mid),
+    0 2px 0 var(--mid),
+    0 3px 1px rgba(0, 0, 0, .4),
+    0 14px 18px rgba(0, 0, 0, .6);
+}
+
+/* ===== Animated Background for Dark & Light Mode ===== */
+
+/* Dark Mode Background */
+body.dark-mode {
+  background: radial-gradient(1200px 600px at 80% -10%, #5432b8 0%, transparent 50%),
+    radial-gradient(900px 500px at 10% 10%, #2f1f76 0%, transparent 55%),
+    linear-gradient(135deg, #241f5a, #2c2370, #3a2e8b);
+  background-size: 100% 100%, 100% 100%, 400% 400%;
+  animation: bg-move 28s ease-in-out infinite;
+}
+
+/* Light Mode Background */
+body.light-mode {
+  background: radial-gradient(1000px 500px at 80% -10%, #d9ccff 0%, transparent 50%),
+    radial-gradient(800px 400px at 10% 10%, #f0e9ff 0%, transparent 55%),
+    linear-gradient(135deg, #f9f6ff, #f3f0ff, #e8e1ff);
+  background-size: 100% 100%, 100% 100%, 400% 400%;
+  animation: bg-move 40s ease-in-out infinite;
+  /* أبطأ شوية في النهار */
+}
+
+@keyframes bg-move {
+  0% {
+    background-position: 0% 50%, 0% 50%, 0% 50%;
+  }
+
+  50% {
+    background-position: 0% 50%, 0% 50%, 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%, 0% 50%, 0% 50%;
+  }
+}
+
+/* ===== Cards Styling for Both Modes ===== */
+
+/* Dark mode cards */
+.dark-mode .stat-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* Light mode cards */
+.light-mode .stat-card {
+  background: linear-gradient(180deg, rgba(0, 0, 0, .03), rgba(0, 0, 0, .015));
+  border: 1px solid rgba(0, 0, 0, .05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* Hover effect (both modes) */
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* الأنيميشن يتم تطبيقه من كلاس آخر الآن، لا نحتاجه هنا */
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  /* زيادة التأثير قليلاً */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .stat-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Logo Glow for Both Modes ===== */
+
+/* Dark mode logo */
+.dark-mode .logo-3d {
+  filter: drop-shadow(0 6px 14px rgba(124, 77, 255, .4));
+}
+
+/* Light mode logo */
+.light-mode .logo-3d {
+  filter: drop-shadow(0 4px 8px rgba(124, 77, 255, .25));
+}
+
+/* ===== Reveal Animation for Cards & Sections ===== */
+
+/* الأقسام الرئيسية */
+/* Reveal Animation for Main Tabs */
+.tab-content {
+  animation: content-reveal 0.5s ease-out forwards;
+}
+
+@keyframes content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* الكروت */
+.stat-card {
+  animation: card-reveal 0.5s ease-out both;
+}
+
+/* حركة الأقسام */
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* حركة الكروت */
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ======================================================= */
+/* === Enhanced Styles for Discount Mode Toggle Switch === */
+/* ======================================================= */
+
+/* --- 1. Default State (Unchecked) --- */
+
+/* The background of the switch in light mode */
+label[for="discountModeToggle"] .block {
+  background-color: #e5e7eb;
+  /* Light grey */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* The handle (the dot) */
+label[for="discountModeToggle"] .dot {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Default State */
+.dark-mode label[for="discountModeToggle"] .block {
+  background-color: rgba(0, 0, 0, 0.25);
+  /* Darker, semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- 2. Active State (Checked) --- */
+
+/* Light Mode Active Color */
+#discountModeToggle:checked~.block {
+  background-color: #4A90E2;
+  /* Your theme's light blue */
+}
+
+/* Dark Mode Active Color */
+.dark-mode #discountModeToggle:checked~.block {
+  background-color: #8a63d2;
+  /* Your theme's primary purple */
+}
+
+/* Move the dot to the right when active (works for both modes) */
+#discountModeToggle:checked~.dot {
+  transform: translateX(20px);
+}
+
+#catalog {
+  transition: padding-bottom 0.3s ease-in-out;
+}
+
+/* ===================================================================
+   7. تنسيقات الجداول (Scoped to .stat-card)
+   =================================================================== */
+
+/* استهداف الجداول الموجودة فقط داخل الكروت */
+.stat-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stat-card table thead {
+  background-color: hsla(0, 0%, 0%, 0.03);
+}
+
+body.dark-mode .stat-card table thead {
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+.stat-card table th,
+.stat-card table td {
+  padding: 12px 15px;
+  /* استخدام قيم ثابتة للراحة */
+  text-align: start;
+  vertical-align: middle;
+  border-block-end: 1px solid hsla(0, 0%, 0%, 0.05);
+  white-space: nowrap;
+}
+
+body.dark-mode .stat-card table th,
+body.dark-mode .stat-card table td {
+  border-block-end-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.stat-card table th {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.stat-card table tbody tr:hover {
+  background-color: hsla(0, 0%, 0%, 0.02);
+}
+
+body.dark-mode .stat-card table tbody tr:hover {
+  background-color: hsla(0, 0%, 100%, 0.03);
+}
+
+/* للتعامل مع الجداول التي قد تكون أعرض من الشاشة */
+.stat-card .overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* لتحسين السكرول على أجهزة أبل */
+}
+
+/* ===================================================================
+   8. تنسيق جديد ومحترف لصفحة الكتالوج (Catalog)
+   =================================================================== */
+
+/* 1. تنسيق القائمة الجانبية (Sidebar) */
+#catalog .lg\\:w-1\\ {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-inline-end: 1px solid rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode #catalog .lg\\:w-1\\ {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-inline-end-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. تحسين مربع البحث */
+#catalogSearch {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.dark-mode #catalogSearch {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#catalogSearch:focus {
+  background-color: #fff;
+  border-color: var(--primary);
+}
+
+.dark-mode #catalogSearch:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-light);
+}
+
+/* 3. تنسيق قائمة الخدمات */
+#catalogServiceList li {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#catalogServiceList li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--primary);
+}
+
+.dark-mode #catalogServiceList li:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* أهم جزء: تنسيق العنصر المختار */
+#catalogServiceList li.selected {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+}
+
+/* 4. إعادة تصميم زر وضع الخصم (Discount Toggle) */
+label[for="discountModeToggle"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.dark-mode label[for="discountModeToggle"] {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* إخفاء الـ checkbox الأصلي */
+#discountModeToggle {
+  display: none;
+}
+
+/* الدائرة المتحركة */
+#discountModeToggle+div .dot {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* عند تفعيل الخصم */
+#discountModeToggle:checked+div .dot {
+  transform: translateX(24px);
+  /* تحريك الدائرة */
+}
+
+#discountModeToggle:checked+div {
+  background-color: var(--accent);
+  /* تغيير لون الخلفية للأخضر */
+}
+
+/* 5. تحسين منطقة المحتوى الرئيسية */
+#selectedServiceTitle {
+  font-size: 1.5rem;
+  color: #a0aec0;
+  /* لون رمادي باهت */
+  text-align: center;
+}
+
+.dark-mode #selectedServiceTitle {
+  color: #718096;
+}
+
+/* ===================================================================
+   9. تحسين شكل زر الخصم في الوضع الليلي (Discount Toggle)
+   =================================================================== */
+
+/* إخفاء التشيك بوكس الأصلي - تأكد من أن هذا الكلاس موجود في الـ HTML */
+#discountModeToggle.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- الحالة العادية (غير مفعل) --- */
+
+/* خلفية الزر - الوضع النهاري */
+#discountModeToggle~.block {
+  background-color: #e5e7eb;
+  /* رمادي فاتح */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* خلفية الزر - الوضع الليلي */
+.dark-mode #discountModeToggle~.block {
+  background-color: rgba(255, 255, 255, 0.15);
+  /* رمادي شفاف وأكثر وضوحًا */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* الدائرة المتحركة (The Dot) - الوضعين */
+#discountModeToggle~.dot {
+  transition: transform 0.2s ease-in-out;
+  background-color: white;
+  /* أبيض في الوضع النهاري */
+}
+
+/* الدائرة المتحركة - الوضع الليلي */
+.dark-mode #discountModeToggle~.dot {
+  background-color: #d1d5db;
+  /* رمادي فاتح بدل الأبيض الناصع */
+}
+
+/* --- الحالة النشطة (مفعل) --- */
+
+/* تحريك الدائرة عند التفعيل */
+#discountModeToggle:checked~.dot {
+  transform: translateX(1.25rem);
+  /* 20px */
+}
+
+/* خلفية الزر النشط - الوضع النهاري */
+#discountModeToggle:checked~.block {
+  background-color: var(--accent);
+  /* أخضر */
+}
+
+/* خلفية الزر النشط - الوضع الليلي */
+.dark-mode #discountModeToggle:checked~.block {
+  background-color: var(--primary);
+  /* بنفسجي بدلاً من الأخضر */
+  border-color: var(--primary-light);
+}
+
+/* الدائرة النشطة - الوضع الليلي */
+.dark-mode #discountModeToggle:checked~.dot {
+  background-color: #ffffff;
+  /* أبيض ناصع للتباين */
+}
+
+@media (max-width: 639px) {
+
+  /* --- الطبقة الشفافة (البلور) --- */
+  /* نعطيها طبقة رقم 49 لتكون خلف القائمة وأمام المحتوى */
+  #activityOverlay {
+    z-index: 49 !important;
+  }
+
+  /* --- تصميم اللوحة الجانبية الرئيسية --- */
+  #navLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 280px;
+    z-index: 50;
+    /* نعطيها طبقة رقم 50 لتكون هي الأعلى دائمًا */
+
+    background-color: #1e1b4b;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #navLinks.open {
+    transform: translateX(0);
+  }
+
+  /* --- تصميم رأس القائمة الجديد --- */
+  .nav-header {
+    display: block;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .nav-header .logo-3d {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  /* --- تصميم الروابط داخل القائمة --- */
+  #navLinks .nav-link {
+    text-align: start;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e2e8f0 !important;
+    margin: 0.25rem 0.75rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    border-bottom: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  #navLinks .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff !important;
+  }
+
+  #navLinks .nav-link.active {
+    background-color: var(--primary);
+    color: #fff !important;
+    font-weight: 600;
+    border-bottom-color: transparent;
+  }
+}
+
+/* ===================================================================
+   12. تنسيق اللوحة الجانبية لفورم الخدمات
+   =================================================================== */
+#serviceFormPanel {
+  /* هذا الكود يضمن أن اللوحة تعمل مثل لوحة سجل التدقيق */
+  transition-property: transform, visibility;
+}
+
+/* ===================================================================
+   14. (NEW) Enhanced Service Management Panel Styles
+   =================================================================== */
+
+/* --- Panel Header --- */
+#serviceFormPanel .p-4.border-b {
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#serviceFormPanel .text-xl {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.dark-mode #serviceFormPanel .text-xl {
+  color: #c4b5fd;
+}
+
+/* --- Main Form Styling --- */
+#serviceForm {
+  padding-top: 0.5rem;
+}
+
+/* --- "Add New Category" Button --- */
+#addCategoryBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+  border: 2px dashed rgba(138, 99, 210, 0.4);
+  background-color: rgba(138, 99, 210, 0.05);
+  color: var(--primary);
+}
+
+.dark-mode #addCategoryBtn {
+  border-color: rgba(196, 181, 253, 0.4);
+  background-color: rgba(196, 181, 253, 0.1);
+  color: #c4b5fd;
+}
+
+#addCategoryBtn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  background-color: rgba(138, 99, 210, 0.1);
+}
+
+.dark-mode #addCategoryBtn:hover {
+  border-color: #c4b5fd;
+  background-color: rgba(196, 181, 253, 0.15);
+}
+
+/* --- Category Group Card --- */
+.category-group {
+  border: none;
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: var(--transition-smooth);
+}
+
+.dark-mode .category-group {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- Category Header --- */
+.category-group .flex.justify-between {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 0.75rem;
+}
+
+.dark-mode .category-group .flex.justify-between {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.category-name-input {
+  font-weight: 600;
+  font-size: 1.125rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.25rem 0.5rem !important;
+  color: var(--text);
+}
+
+.dark-mode .category-name-input {
+  color: var(--dark-text);
+}
+
+.remove-category-btn {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #ef4444;
+  opacity: 0.5;
+  transition: var(--transition-smooth);
+}
+
+.remove-category-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* --- Items Container --- */
+.items-container {
+  padding-top: 1rem;
+  margin-left: 0 !important;
+  /* Override margin-left */
+}
+
+.items-container>h4 {
+  display: none;
+  /* Hide the old "Items" title */
+}
+
+/* --- "Add Item" Button --- */
+.add-item-btn {
+  width: 100%;
+  font-weight: 500;
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.dark-mode .add-item-btn {
+  background-color: #312e81;
+  /* A dark indigo color */
+  color: #e0e7ff;
+}
+
+.add-item-btn:hover {
+  background-color: #3b82f6;
+}
+
+.dark-mode .add-item-btn:hover {
+  background-color: #3730a3;
+}
+
+/* --- Item Group Row --- */
+.item-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .item-group {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.item-group:last-child {
+  border-bottom: none;
+}
+
+.item-name-input,
+.item-price-input {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  border-color: transparent !important;
+  border-radius: var(--border-radius-sm) !important;
+}
+
+.dark-mode .item-name-input,
+.dark-mode .item-price-input {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.remove-item-btn {
+  color: #ef4444;
+  font-size: 1.25rem;
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.remove-item-btn:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* --- Final Save Button --- */
+#serviceForm .flex.justify-end {
+  margin-top: 1.5rem;
+}
+
+/* ===================================================================
+   14.A (FIX) Style Service Name Input
+   =================================================================== */
+
+#serviceName {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: none !important;
+  transition: var(--transition-smooth);
+}
+
+.dark-mode #serviceName {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--dark-text);
+}
+
+#serviceName:focus {
+  border-color: var(--primary) !important;
+  background-color: #fff !important;
+}
+
+.dark-mode #serviceName:focus {
+  border-color: #c4b5fd !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===================================================================
+   15. Mobile Header Adjustments
+   =================================================================== */
+
+@media (max-width: 639px) {
+
+  /* تصغير زر سجل التدقيق */
+  #activityToggle {
+    padding-top: 0.5rem;
+    /* 8px */
+    padding-bottom: 0.5rem;
+    /* 8px */
+    padding-left: 0.75rem;
+    /* 12px */
+    padding-right: 0.75rem;
+    /* 12px */
+    font-size: 0.8rem;
+    /* تصغير حجم الخط */
+    height: 38px;
+    /* تحديد ارتفاع ثابت ليتماشى مع الأزرار الأخرى */
+  }
+
+  /* تصغير أيقونة الجرس داخل الزر */
+  #activityToggle svg {
+    height: 1rem;
+    /* 16px */
+    width: 1rem;
+    /* 16px */
+  }
+
+  /* تعديل هوامش حاوية الأزرار العلوية لتكون متناسقة */
+  .order-2.mt-4 {
+    margin-top: 1rem;
+    /* تقليل المسافة العلوية بين اللوجو والأزرار */
+  }
+}
+
+/* ===================================================================
+   16. Professional Header & Nav Styles (Final)
+   =================================================================== */
+
+/* ===================================================================
+   17. Final Header & Nav Adjustments (FIX)
+   =================================================================== */
+
+/* (إصلاح مشكلة الموبايل)
+   هذا يضمن أن القائمة المنبثقة لا تؤثر على مكان أيقونة الإعدادات */
+#settingsPopover {
+  width: max-content;
+  /* اجعل عرض القائمة مناسبًا للمحتوى */
+}
+
+/* (إصلاح مشكلة الكمبيوتر) 
+   تنسيق الـ Nav ليكون شريط تنقل حقيقي تحت الهيدر */
+@media (min-width: 640px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    /* توسيط الروابط */
+  }
+
+  #navLinks {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 9999px;
+    /* شكل كبسولة */
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .dark-mode #navLinks {
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  #navLinks .nav-link {
+    border-radius: 9999px;
+    /* أزرار دائرية */
+    border-bottom: none !important;
+    /* إزالة الخط السفلي */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  #navLinks .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .dark-mode #navLinks .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #navLinks .nav-link.active {
+    background-color: var(--primary);
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(138, 99, 210, 0.4);
+  }
+
+  .dark-mode #navLinks .nav-link.active {
+    box-shadow: 0 0 20px rgba(138, 99, 210, 0.6);
+  }
+}
+
+/* ===================================================================
+   18. Final Button Styles (FIX)
+   =================================================================== */
+
+.control-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  /* Circle */
+  color: var(--text);
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .control-icon-btn {
+  color: #e2e8f0;
+}
+
+.control-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  transform: scale(1.1);
+}
+
+.dark-mode .control-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ===================================================================
+   FINAL HEADER & NAV STYLES (Version 4)
+   =================================================================== */
+
+/* Style for the icon-only buttons */
+.control-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  /* Circle */
+  color: var(--text);
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .control-icon-btn {
+  color: #e2e8f0;
+}
+
+.control-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  transform: scale(1.1);
+}
+
+.dark-mode .control-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile Settings Popover */
+#settingsPopover {
+  transform-origin: top right;
+  animation: popover-in 0.2s ease-out forwards;
+}
+
+@keyframes popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Desktop Navigation Bar styles */
+@media (min-width: 640px) {
+  header .nav-link {
+    overflow: visible !important;
+    /* هذا هو السطر الحاسم الذي يحل المشكلة */
+    white-space: nowrap;
+    /* هذا السطر يبقي على حجم الكبسولة صحيحاً */
+    border-radius: 9999px;
+    border-bottom: none !important;
+    font-weight: 500;
+  }
+
+  /* هذا الكود يخفي الخط السفلي في نسخة الكمبيوتر فقط */
+  header .nav-link::before {
+    display: none;
+  }
+
+  header .nav-link.active {
+    background-color: var(--primary);
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(138, 99, 210, 0.4);
+  }
+
+  .dark-mode header .nav-link.active {
+    box-shadow: 0 0 20px rgba(138, 99, 210, 0.6);
+  }
+}
+
+/* ===================================================================
+   FINAL Audit Panel Push Animation (Mobile)
+   =================================================================== */
+
+@media (max-width: 639px) {
+
+  /* عندما تفتح لوحة سجل التدقيق، ادفع التطبيق بالكامل إلى اليسار */
+  body.activity-panel-open #app-container {
+    transform: translateX(-16rem);
+    /* 16rem هي عرض اللوحة (w-64) */
+  }
+
+  /* أبقِ الهيدر ثابتًا في الأعلى أثناء التمرير */
+  body.activity-panel-open header,
+  body.activity-panel-open nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+  }
+}
+
+/* ======================================================= */
+/* === (إصلاح نهائي) جعل قائمة الاقتراحات غير شفافة === */
+/* ======================================================= */
+
+#clientNameSuggestions {
+  /* لون خلفية صريح وغير شفاف للوضع العادي */
+  background-color: #ffffff !important;
+}
+
+body.dark-mode #clientNameSuggestions {
+  /* لون خلفية صريح وغير شفاف للوضع الليلي */
+  background-color: #334155 !important;
+  /* هذا يعادل slate-700 */
+  border: 1px solid #475569;
+}
