@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/3abqar/feastly/blob/main/src/assets/images/logo.png" alt="Abqar Store Logo" width="120"/></p>
+<p align="center"><img src="https://github.com/3abqar/feastly/blob/main/src/assets/images/logo.png" alt="Abqar Store Logo" width="200"/></p>
 
 # 🛍️ Abqar Store Sales
 
