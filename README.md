@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/3abqar/feastly/blob/main/src/assets/images/logo.png" alt="Abqar Store Logo" width="200"/></p>
+<p align="center"><img src="https://github.com/3abqar/feastly/blob/main/logo.png" alt="Abqar Store Logo" width="120"/></p>
 
 # 🛍️ Abqar Store Sales
 
@@ -39,6 +39,12 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 **Charts:** Chart.js
 **PDF Generation:** PDFMake
 **Icons:** Heroicons
+**Build Tool:** Vite
+**Testing:** Vitest
+
+## 🎨 UI/UX Design
+
+**Figma Design:** [View Design System](https://www.figma.com/design/8OPjvTt4koPXAYCrUZEd1q/Abqar-Store?node-id=0-1&t=76Pe2ywLsGG5sz01-1)
 
 ---
 
@@ -94,29 +100,67 @@ Follow these steps to run the project locally:
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/3abqar/abqar-store-sales.git
-cd abqar-store-sales
+git clone https://github.com/3abqar/abqar_store1.git
+cd abqar_store1
 ```
 
-### 2️⃣ Firebase Setup
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Environment Setup
+
+1. Create a `.env` file in the project root
+2. Add your Firebase configuration variables:
+
+```env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your-api-key
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+VITE_FIREBASE_APP_ID=your-app-id
+VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
+
+# Application Configuration
+VITE_APP_TITLE=Abqar Store Sales
+VITE_DEFAULT_LANGUAGE=ar
+VITE_DEFAULT_DAILY_GOAL=5000
+```
+
+### 4️⃣ Firebase Setup
 
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Enable Firestore Database and Authentication
-3. Update the Firebase configuration in `firebase.js` with your project credentials
+3. Copy your Firebase configuration to the `.env` file
 
-### 3️⃣ Run the application
+### 5️⃣ Run the application
 
-You can easily run the project using Live Server in VS Code:
+```bash
+npm run dev
+```
+
+For production build:
+```bash
+npm run build
+```
+
+To preview the production build:
+```bash
+npm run preview
+```
 
 1. Open the project folder in VS Code
 2. Right-click on `index.html`
 3. Choose “Open with Live Server”
 
-### 4️⃣ Access the application
+### 6️⃣ Access the application
 
-Your default browser will open automatically.
-If not, go to the address shown by Live Server (usually `http://127.0.0.1:5500`
-).
+- **Development:** Open `http://localhost:3000` in your browser
+- **Production:** The built files will be in the `dist/` directory
 
 ---
 
@@ -182,22 +226,65 @@ If not, go to the address shown by Live Server (usually `http://127.0.0.1:5500`
 
 ---
 
+## 📁 Project Structure
+
+The project has been refactored with a modern, organized structure:
+
+```
+project-root/
+├── .env                          # Environment variables (not in git)
+├── .gitignore                    # Git ignore rules
+├── package.json                  # Dependencies and scripts
+├── vite.config.js               # Vite build configuration
+├── tailwind.config.js           # Tailwind CSS configuration
+├── postcss.config.js            # PostCSS configuration
+├── README.md                    # Project documentation
+└── src/                         # All source code
+    ├── backend/                 # Firebase and backend logic
+    │   ├── firebase.js          # Firebase configuration
+    │   └── auditLog.js          # Audit logging functionality
+    ├── pages/                   # UI components and page logic
+    │   ├── main.js              # Main application logic
+    │   └── script.js            # Additional page functionality
+    ├── assets/                  # Static assets
+    │   ├── images/              # Images and icons
+    │   │   ├── logo.png
+    │   │   └── image_fx_.jpg
+    │   └── styles/              # Stylesheets
+    │       └── globals.css      # Global Tailwind styles
+    ├── utils/                   # Helper functions and utilities
+    │   └── ui.js                # UI utility functions
+    └── config/                  # Configuration files
+        └── env.js               # Environment configuration
+```
+
 ## 🔧 Configuration
+
+### Environment Variables
+
+The application uses environment variables for secure configuration. Create a `.env` file in the project root:
+
+```env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your-api-key
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+VITE_FIREBASE_APP_ID=your-app-id
+VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
+
+# Application Configuration
+VITE_APP_TITLE=Abqar Store Sales
+VITE_DEFAULT_LANGUAGE=ar
+VITE_DEFAULT_DAILY_GOAL=5000
+```
+
+**Important:** Never commit the `.env` file to version control. It's already included in `.gitignore`.
 
 ### Firebase Configuration
 
-Update the `firebaseConfig` object in `firebase.js` with your Firebase project credentials:
-
-```javascript
-const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "your-sender-id",
-  appId: "your-app-id",
-};
-```
+The Firebase configuration is now automatically loaded from environment variables. The system will read these values from your `.env` file and configure Firebase accordingly.
 
 ### Firestore Security Rules
 
@@ -211,6 +298,72 @@ service cloud.firestore {
   }
 }
 ```
+
+---
+
+## 🔨 Development & Build Process
+
+### Getting Started
+
+First, clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/3abqar/abqar_store1.git
+cd abqar_store1
+npm install
+```
+
+### Development
+
+Start the development server with hot reload:
+
+```bash
+npm run dev
+```
+
+This will:
+- Start Vite development server on `http://localhost:3000`
+- Enable hot module replacement for instant updates
+- Compile Tailwind CSS with all utilities available
+- Load environment variables from `.env` file
+
+### Production Build
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+This will:
+- Minify HTML, CSS, and JavaScript
+- Optimize and purge unused Tailwind CSS classes
+- Generate optimized asset file names with hashes
+- Create a `dist/` directory with all production files
+
+### Preview Production Build
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+### Performance Optimizations
+
+The build process includes several optimizations:
+- **CSS Purging:** Unused Tailwind classes are removed in production
+- **Asset Optimization:** Images and other assets are optimized and hashed
+- **Code Minification:** JavaScript and CSS are minified using esbuild
+- **Bundle Splitting:** Automatic code splitting for better caching
 
 ---
 
