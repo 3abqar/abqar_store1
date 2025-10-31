@@ -32,7 +32,7 @@ function toEgyptIntl(phone) {
 // --- TRANSLATION DATA ---
 window.translations = {
     en: {
-        app_title: "Abqar Store Sales",
+        app_title: "Abqar Store",
         dashboard: "Dashboard",
         sales_log: "Sales & Log",
         customers: "Customers",
@@ -190,7 +190,7 @@ window.translations = {
         gold: "Gold"
     },
     ar: {
-        app_title: "مبيعات متجر عبقر",
+        app_title: "متجر عبقر",
         dashboard: "لوحة التحكم",
         sales_log: "المبيعات والسجل",
         customers: "العملاء",
@@ -374,11 +374,11 @@ function initializeApp() {
             });
 
             if (shouldBeDarkMode) {
-                document.body.classList.add("dark-mode");
+                document.documentElement.classList.add("dark");
                 document.body.classList.remove("light-mode");
             } else {
+                document.documentElement.classList.remove("dark");
                 document.body.classList.add("light-mode");
-                document.body.classList.remove("dark-mode");
             }
 
             window.currentLanguage = localStorage.getItem("language") || "ar";
@@ -1187,16 +1187,52 @@ function initializeApp() {
         const links = document.getElementById('navLinks');
         const menuIcon = document.getElementById('mobileMenuIcon');
         const overlay = document.getElementById('activityOverlay');
+        const menuToggle = document.getElementById('mobileMenuToggle');
 
         if (!links || !menuIcon || !overlay) return;
 
+        // Add click animation to the toggle button
+        if (menuToggle) {
+            menuToggle.style.transform = 'scale(0.9) rotate(90deg)';
+            setTimeout(() => {
+                menuToggle.style.transform = '';
+            }, 200);
+        }
+
         const isOpen = links.classList.toggle('open');
+        
         if (isOpen) {
+            // Opening animation
             overlay.classList.remove('hidden');
-            menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+            links.style.transform = 'translateY(-10px)';
+            links.style.opacity = '0';
+            
+            setTimeout(() => {
+                links.style.transform = 'translateY(0)';
+                links.style.opacity = '1';
+            }, 50);
+
+            // Animate menu icon to X with rotation
+            menuIcon.style.transform = 'rotate(180deg)';
+            setTimeout(() => {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+                menuIcon.style.transform = 'rotate(0deg)';
+            }, 150);
         } else {
-            overlay.classList.add('hidden');
-            menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+            // Closing animation
+            links.style.transform = 'translateY(-10px)';
+            links.style.opacity = '0';
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 200);
+
+            // Animate menu icon back to hamburger
+            menuIcon.style.transform = 'rotate(-180deg)';
+            setTimeout(() => {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+                menuIcon.style.transform = 'rotate(0deg)';
+            }, 150);
         }
     }
 
@@ -1470,9 +1506,17 @@ function initializeApp() {
     }
 
     function handleDarkModeToggle(event) {
-        document.body.classList.toggle('dark-mode', event.target.checked);
+        document.documentElement.classList.toggle('dark', event.target.checked);
         document.body.classList.toggle('light-mode', !event.target.checked);
         localStorage.setItem('darkMode', event.target.checked ? 'enabled' : 'disabled');
+        
+        // Sync all dark mode toggles
+        document.querySelectorAll('[id^="darkmode-toggle"]').forEach(toggle => {
+            if (toggle !== event.target) {
+                toggle.checked = event.target.checked;
+            }
+        });
+        
         updateAllViews();
     }
 
@@ -1480,6 +1524,7 @@ function initializeApp() {
         window.currentLanguage = window.currentLanguage === "en" ? "ar" : "en";
         localStorage.setItem("language", window.currentLanguage);
         window.UI.setCurrentLanguage(window.currentLanguage);
+        window.UI.setLanguage(window.currentLanguage);
         updateAllViews();
     }
 

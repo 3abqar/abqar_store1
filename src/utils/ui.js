@@ -56,12 +56,12 @@ function initializeCharts() {
             x: {
               beginAtZero: true,
               ticks: {
-                color: document.body.classList.contains('dark-mode') ? '#f3f4f6' : '#374151'
+                color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151'
               }
             },
             y: {
               ticks: {
-                color: document.body.classList.contains('dark-mode') ? '#f3f4f6' : '#374151'
+                color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151'
               }
             }
           },
@@ -141,7 +141,7 @@ function buildWhatsAppLink(msisdn, message) {
 
 function updateCharts(salesData) {
   if (!salesData) return;
-  const isDarkMode = document.body.classList.contains("dark-mode");
+  const isDarkMode = document.documentElement.classList.contains("dark");
   const textColor = isDarkMode ? "#f3f4f6" : "#374151";
 
   if (serviceTypeChart) {
@@ -1295,6 +1295,49 @@ function showBonusPointsModal(customerId, onApplyCallback) {
     };
     
     modal.classList.remove('hidden');
+}
+
+// Language translation function
+function setLanguage(lang) {
+    if (!window.translations || !window.translations[lang]) return;
+    
+    const translations = window.translations[lang];
+    
+    // Update document title
+    const titleElement = document.querySelector('title[data-translate]');
+    if (titleElement) {
+        const key = titleElement.getAttribute('data-translate');
+        if (translations[key]) {
+            document.title = translations[key];
+        }
+    }
+    
+    // Update all elements with data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[key]) {
+            // Handle different element types
+            if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'email' || element.type === 'password')) {
+                element.placeholder = translations[key];
+            } else if (element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[key];
+            } else if (element.tagName === 'TITLE') {
+                // Already handled above
+                return;
+            } else {
+                element.textContent = translations[key];
+            }
+        }
+    });
+    
+    // Update document direction based on language
+    if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+    } else {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+    }
 }
 
 // Export all functions to global scope
