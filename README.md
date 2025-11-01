@@ -153,10 +153,6 @@ To preview the production build:
 npm run preview
 ```
 
-1. Open the project folder in VS Code
-2. Right-click on `index.html`
-3. Choose “Open with Live Server”
-
 ### 6️⃣ Access the application
 
 - **Development:** Open `http://localhost:3000` in your browser
