@@ -10,7 +10,6 @@ This section contains comprehensive system design and architecture documentation
 - [Database Design](database-design/) - ER diagrams and schema documentation
 - [System Behavior](system-behavior/) - Data flow, sequence, and activity diagrams
 - [UI/UX Design](ui-ux-design/) - Wireframes, mockups, and design guidelines
-- [Deployment](deployment/) - Technology stack and deployment documentation
 
 ## Requirements Addressed
 
