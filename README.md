@@ -42,6 +42,10 @@ Enhance retail store efficiency, reduce manual errors, and increase profitabilit
 **Build Tool:** Vite
 **Testing:** Vitest
 
+## 📘 Abqar Store Sales System - Documentation
+
+**Documentation:** [Read Documentation System](https://github.com/3abqar/abqar_store1/tree/main/docs)
+
 ## 🎨 UI/UX Design
 
 **Figma Design:** [View Design System](https://www.figma.com/design/8OPjvTt4koPXAYCrUZEd1q/Abqar-Store?node-id=0-1&t=76Pe2ywLsGG5sz01-1)
