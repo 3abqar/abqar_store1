@@ -1,6 +1,6 @@
-# Abqar Store Sales System - Academic Documentation
+# Abqar Store Sales System - Documentation
 
-This repository contains comprehensive academic documentation for the Abqar Store Sales digital management system, following university standards for software engineering project evaluation.
+This repository contains comprehensive documentation for the Abqar Store Sales digital management system
 
 ## Documentation Structure
 
