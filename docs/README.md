@@ -25,14 +25,10 @@ Testing strategy, test cases, and quality assurance documentation.
 ### [07. Final Presentation & Reports](07-final-reports/)
 Final deliverables including user manuals, technical documentation, and presentation materials.
 
-## Academic Compliance
-
-This documentation follows academic standards for software engineering projects and addresses all required evaluation criteria for university-level project assessment.
-
 ## Navigation
 
 Each section contains detailed documentation with cross-references to related sections and requirements traceability to ensure comprehensive coverage of all project aspects.
 
 ---
 
-*Generated as part of the Abqar Store Sales System academic documentation project*
+*Generated as part of the Abqar Store Sales System documentation project*
