@@ -53,6 +53,7 @@ module.exports = {
           900: '#0c4a6e',
           950: '#082f49'
         },
+
         accent: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -114,9 +115,25 @@ module.exports = {
           800: '#262626',
           900: '#171717',
           950: '#0a0a0a'
-        }
+        },
+        // Homepage custom colors
+        footerBlue: '#1A4996',
+        footerGreen: '#218D70',
+        homeTitleBlue: '#1B5093',
+        homeTitleGreen: '#218B72',
+        servicesTextBlue: '#1A4396',
+        servicesTextCyan: '#1A4396',
+        servicesTextLightBlue: '#02D6BE',
+        servicesTextLightGreen: '#1CE489',
+        customBlue: '#1A4996E5',
+        customGreen: '#218D70E5',
+        customBlueServices: '#1A4996',
+        customGreenServices: '#218D70'
       },
       fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif'],
         'cairo': ['Cairo', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif']
       },
@@ -223,3 +240,4 @@ module.exports = {
   },
   plugins: []
 }
+
