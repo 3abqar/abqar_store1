@@ -3,7 +3,234 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sign Up</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
-  <body></body>
+
+  <body
+    class="bg-[#EEF6FF] h-screen overflow-hidden flex items-center justify-center font-roboto"
+  >
+    <div
+      class="w-11/12 md:w-4/5 h-[90vh] flex flex-col md:flex-row items-center justify-between gap-10"
+    >
+      <!-- LEFT -->
+      <div class="w-full md:w-[40%] text-center flex flex-col justify-center">
+        <img
+          src="../assets//images/abqarLogo.png"
+          alt="logo"
+          class="mx-auto mb-6 w-full max-w-[200px] drop-shadow-md"
+        />
+
+        <div
+          class="text-gray-700 text-sm md:text-base leading-relaxed space-y-3"
+        >
+          <p class="font-medium">
+            Abqar Store Sales is a smart digital sales management system
+            designed to transform traditional retail operations into a fast,
+            efficient, and paperless experience.
+          </p>
+          <p>
+            It provides an interactive real-time dashboard, complete sales and
+            customer management, and an intelligent loyalty system with advanced
+            analytics to help store owners make data-driven decisions.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div
+        class="w-full md:w-[45%] bg-white rounded-3xl shadow-lg p-8 md:p-10 flex flex-col items-center justify-center text-center"
+      >
+        <h1 class="mb-3 text-3xl font-bold text-gray-800">Sign up</h1>
+        <p class="mb-8 text-sm text-gray-600 leading-relaxed">
+          Create your account to get access
+          <br class="hidden md:block" />
+          to various features
+        </p>
+
+        <!-- FORM -->
+        <form id="signupForm" class="w-full flex flex-col gap-5 mb-4">
+          <div class="relative">
+            <i
+              class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            ></i>
+            <input
+              type="text"
+              placeholder="Name"
+              class="w-full rounded-md border border-gray-300 py-3 pl-10 pr-3 shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+            />
+            <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+          </div>
+
+          <div class="relative">
+            <i
+              class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            ></i>
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full rounded-md border border-gray-300 py-3 pl-10 pr-3 shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+            />
+            <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+          </div>
+
+          <div class="relative">
+            <i
+              class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            ></i>
+            <input
+              type="password"
+              placeholder="Password"
+              class="w-full rounded-md border border-gray-300 py-3 pl-10 pr-3 shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+            />
+            <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+          </div>
+
+          <div class="relative">
+            <i
+              class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            ></i>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              class="w-full rounded-md border border-gray-300 py-3 pl-10 pr-3 shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+            />
+            <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-[#2C7789] py-3 text-lg text-white shadow-md transition-all duration-200 hover:bg-[#256975]"
+          >
+            Sign up
+          </button>
+        </form>
+
+        <p class="mt-4 text-sm text-gray-700">
+          Already have an account?
+          <a
+            href="login.html"
+            class="font-semibold text-[#2C7789] hover:underline"
+            >Sign in</a
+          >
+        </p>
+
+        <div class="my-6 flex w-full items-center">
+          <div class="flex-1 border-t border-gray-300"></div>
+          <span class="px-2 text-sm text-gray-500">or continue with</span>
+          <div class="flex-1 border-t border-gray-300"></div>
+        </div>
+
+        <!-- Social buttons -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            class="flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm shadow-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 48 48"
+              class="h-5 w-5"
+            >
+              <path
+                fill="#EA4335"
+                d="M24 9.5c3.9 0 6.6 1.7 8.1 3.2l6-6C34.2 2.7 29.5 1 24 1 14.8 1 7 6.9 3.6 15l7.4 5.7C12.7 14.2 17.9 9.5 24 9.5z"
+              />
+              <path
+                fill="#34A853"
+                d="M46.5 24.5c0-1.6-.1-2.8-.4-4H24v8h12.7c-.6 3.1-2.4 5.7-5.1 7.5l7.8 6c4.5-4.2 7.1-10.3 7.1-17.5z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M10.9 28.2a14.3 14.3 0 0 1 0-8.4l-7.3-5.6A23 23 0 0 0 1 24c0 3.7.9 7.1 2.6 10.1l7.3-5.9z"
+              />
+              <path
+                fill="#4285F4"
+                d="M24 47c6.5 0 11.9-2.1 15.8-5.9l-7.8-6c-2.2 1.5-5 2.3-8 2.3-6.1 0-11.3-4.1-13.2-9.7l-7.4 5.8C7 41 14.8 47 24 47z"
+              />
+            </svg>
+            Google
+          </button>
+
+          <button
+            class="flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm text-blue-600 shadow-sm"
+          >
+            <i class="fa-brands fa-facebook text-xl"></i>
+            Facebook
+          </button>
+
+          <button
+            class="flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm shadow-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 551.034 551.034"
+              class="h-5 w-5"
+            >
+              <linearGradient
+                id="a"
+                x1="275.517"
+                x2="275.517"
+                y1="0"
+                y2="551.034"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0" stop-color="#f58529" />
+                <stop offset=".25" stop-color="#dd2a7b" />
+                <stop offset=".5" stop-color="#8134af" />
+                <stop offset=".75" stop-color="#515bd4" />
+                <stop offset="1" stop-color="#405de6" />
+              </linearGradient>
+              <path
+                fill="url(#a)"
+                d="M386.878 0H164.155C73.548 0 0 73.548 0 164.155v222.723c0 90.607 73.548 164.155 164.155 164.155h222.723c90.607 0 164.155-73.548 164.155-164.155V164.155C551.034 73.548 477.485 0 386.878 0zM512 386.878c0 69.233-55.89 125.122-125.122 125.122H164.155C94.922 512 39.034 456.11 39.034 386.878V164.155C39.034 94.922 94.922 39.034 164.155 39.034h222.723C456.11 39.034 512 94.922 512 164.155v222.723z"
+              />
+              <path
+                fill="url(#a)"
+                d="M275.517 133.823c-77.96 0-141.694 63.734-141.694 141.694s63.734 141.694 141.694 141.694 141.694-63.734 141.694-141.694-63.734-141.694-141.694-141.694zm0 235.354c-51.69 0-93.66-41.97-93.66-93.66s41.97-93.66 93.66-93.66 93.66 41.97 93.66 93.66-41.97 93.66-93.66 93.66zM418.31 92.91c-18.26 0-33.09 14.83-33.09 33.09s14.83 33.09 33.09 33.09 33.09-14.83 33.09-33.09-14.83-33.09-33.09-33.09z"
+              />
+            </svg>
+            Instagram
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/validation.js"></script>
+    <script type="module">
+      import { auth } from "../backend/firebase.js";
+      import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+      const form = document.getElementById("signupForm");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const inputs = form.querySelectorAll("input");
+        const email = inputs[1].value.trim();
+        const password = inputs[2].value.trim();
+        const confirmPassword = inputs[3].value.trim();
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          alert("✅ Account created successfully!");
+          window.location.href = "signin.html";
+        } catch (error) {
+          alert("❌ " + error.message);
+        }
+      });
+    </script>
+  </body>
 </html>

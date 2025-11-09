@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Password</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body
+    class="min-h-screen flex items-center justify-center font-roboto bg-[#EEF6FF]"
+  >
+    <div
+      class="w-11/12 sm:w-[550px] lg:w-[600px] rounded-3xl bg-white shadow-lg px-6 py-14 md:px-10 md:py-20 flex flex-col items-center text-center"
+    >
+      <h1 class="mb-6 text-4xl font-bold text-gray-800">Change Password</h1>
+      <p class="mb-10 text-base font-medium text-gray-700">
+        Enter your new password and confirm below.
+      </p>
+
+      <!-- FORM -->
+      <form class="w-full flex flex-col gap-8 mb-10">
+        <div class="relative">
+          <i
+            class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg"
+          ></i>
+          <input
+            type="password"
+            placeholder="New Password"
+            class="w-full rounded-md border border-gray-300 py-4 pl-12 pr-3 text-base shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+          />
+        </div>
+
+        <div class="relative">
+          <i
+            class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg"
+          ></i>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            class="w-full rounded-md border border-gray-300 py-4 pl-12 pr-3 text-base shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+          />
+          <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-xl bg-[#2C7789] py-4 text-xl font-semibold text-white shadow-md transition-all duration-200 hover:bg-[#256975]"
+        >
+          Change Password
+        </button>
+      </form>
+    </div>
+
+    <!-- Firebase Password Reset  -->
+    <script type="module">
+      import { auth } from "../backend/firebase.js";
+      import {
+        confirmPasswordReset,
+        verifyPasswordResetCode,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+      const form = document.querySelector("form");
+      const params = new URLSearchParams(window.location.search);
+      const oobCode = params.get("oobCode"); // الكود اللي جاي من لينك الإيميل
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const newPassword = form
+          .querySelector("input[placeholder='New Password']")
+          .value.trim();
+        const confirmPassword = form
+          .querySelector("input[placeholder='Confirm Password']")
+          .value.trim();
+
+        if (newPassword !== confirmPassword) {
+          alert("⚠️ Passwords do not match!");
+          return;
+        }
+
+        try {
+          await verifyPasswordResetCode(auth, oobCode);
+
+          await confirmPasswordReset(auth, oobCode, newPassword);
+
+          alert("✅ Password changed successfully!");
+          window.location.href = "signin.html";
+        } catch (error) {
+          alert("❌ " + error.message);
+        }
+      });
+    </script>
+  </body>
+</html>

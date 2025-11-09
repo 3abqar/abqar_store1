@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forget Password</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body
+    class="bg-[#EEF6FF] h-screen flex items-center justify-center font-roboto"
+  >
+    <div
+      class="w-11/12 md:w-4/5 h-[90vh] flex flex-col md:flex-row items-center justify-between gap-10"
+    >
+      <!-- LEFT -->
+      <div class="w-full md:w-[40%] text-center flex flex-col justify-center">
+        <img
+          src="../assets//images/abqarLogo.png"
+          alt="logo"
+          class="mx-auto mb-6 w-full max-w-[200px] drop-shadow-md"
+        />
+
+        <div
+          class="text-sm md:text-base text-gray-700 leading-relaxed space-y-3"
+        >
+          <p class="font-medium">
+            Abqar Store Sales is a smart digital sales management system
+            designed to transform traditional retail operations into a fast,
+            efficient, and paperless experience.
+          </p>
+          <p>
+            It provides an interactive real-time dashboard, complete sales and
+            customer management, and an intelligent loyalty system with advanced
+            analytics to help store owners make data-driven decisions.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div
+        class="w-full md:w-[45%] bg-white rounded-3xl shadow-lg p-8 md:p-10 flex flex-col items-center justify-center text-center h-auto"
+      >
+        <h1 class="mb-3 text-3xl font-bold text-gray-800">Forget Password</h1>
+        <p class="mb-8 text-sm text-gray-600 leading-relaxed">
+          Please enter your email address. You will receive a link to create a
+          new password via email.
+        </p>
+
+        <!-- FORM -->
+        <form class="w-full flex flex-col gap-5 mb-4">
+          <div class="relative">
+            <i
+              class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            ></i>
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full rounded-md border border-gray-300 py-3 pl-10 pr-3 shadow-sm outline-none focus:ring-2 focus:ring-[#2C7789]"
+            />
+            <p class="error-msg mt-1 hidden text-sm text-red-500"></p>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-[#2C7789] py-3 text-lg text-white shadow-md transition-all duration-200 hover:bg-[#256975] mb-5"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="js/validation.js"></script>
+    <script type="module">
+      import { auth } from "../backend/firebase.js";
+      import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = form
+          .querySelector("input[placeholder='Email']")
+          .value.trim();
+
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert("📩 Reset email sent! Check your inbox.");
+        } catch (error) {
+          alert("⚠️ " + error.message);
+        }
+      });
+    </script>
+  </body>
+</html>
