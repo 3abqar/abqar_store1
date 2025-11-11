@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Fix Test</title>
+</head>
+<body>
+    <h1>Firebase Configuration Test</h1>
+    <div id="status">Testing...</div>
+
+    <!-- Load Firebase compat library -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <!-- Load environment config -->
+    <script src="./src/config/env.js"></script>
+
+    <!-- Load Firebase initialization -->
+    <script src="./src/backend/firebase.js"></script>
+
+    <!-- Test script -->
+    <script>
+        const statusDiv = document.getElementById('status');
+        
+        try {
+            if (typeof firebase === 'undefined') {
+                statusDiv.innerHTML = '<span style="color: red;">❌ Firebase library not loaded</span>';
+            } else if (typeof window.firebaseExports === 'undefined') {
+                statusDiv.innerHTML = '<span style="color: red;">❌ Firebase not initialized properly</span>';
+            } else {
+                statusDiv.innerHTML = '<span style="color: green;">✅ Firebase initialized successfully!</span>';
+                console.log('Firebase exports:', window.firebaseExports);
+            }
+        } catch (error) {
+            statusDiv.innerHTML = '<span style="color: red;">❌ Error: ' + error.message + '</span>';
+            console.error('Firebase initialization error:', error);
+        }
+    </script>
+</body>
+</html>

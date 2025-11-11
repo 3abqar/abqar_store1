@@ -1,6 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
+// Firebase configuration using compat library
 const firebaseConfig = {
   apiKey: window.ENV_CONFIG.FIREBASE_API_KEY,
   authDomain: window.ENV_CONFIG.FIREBASE_AUTH_DOMAIN,
@@ -11,10 +9,7 @@ const firebaseConfig = {
   measurementId: window.ENV_CONFIG.FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-
+// Initialize Firebase with compat library
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
