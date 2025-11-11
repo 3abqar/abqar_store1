@@ -226,7 +226,7 @@
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           alert("✅ Account created successfully!");
-          window.location.href = "signin.html";
+          window.location.href = "login.html";
         } catch (error) {
           alert("❌ " + error.message);
         }
