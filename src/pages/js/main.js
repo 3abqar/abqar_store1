@@ -185,6 +185,8 @@ window.translations = {
         discount_value: "Discount Value",
         apply_discount: "Apply Discount",
         add_customer: "Add Customer",
+        logout: "Logout",
+        logout_confirm: "Are you sure you want to logout?",
         bronze: "Bronze",
         silver: "Silver",
         gold: "Gold"
@@ -343,6 +345,8 @@ window.translations = {
         discount_value: "قيمة الخصم",
         apply_discount: "تطبيق الخصم",
         add_customer: "إضافة عميل",
+        logout: "تسجيل الخروج",
+        logout_confirm: "هل أنت متأكد أنك تريد تسجيل الخروج؟",
         bronze: "برونزي",
         silver: "فضي",
         gold: "ذهبي"
