@@ -46,6 +46,83 @@
     @apply bg-white dark:bg-slate-800 shadow-soft border border-gray-200 dark:border-slate-700 relative overflow-hidden;
   }
 
+  /* Navbar Component Classes */
+  .navbar {
+    @apply bg-white shadow fixed top-0 left-0 right-0 z-50;
+  }
+  
+  .navbar-inner {
+    @apply max-w-7xl mx-auto px-6 py-4;
+  }
+  
+  .navbar-content {
+    @apply flex items-center justify-between;
+  }
+  
+  .navbar-logo-section {
+    @apply flex items-center space-x-3;
+  }
+  
+  .navbar-logo {
+    @apply h-12 sm:h-14 w-auto;
+  }
+  
+  .navbar-mobile-button {
+    @apply lg:hidden relative inline-block;
+  }
+  
+  .navbar-dropdown {
+    @apply inline-flex flex-col justify-center items-center gap-1.5 rounded-md bg-white px-3 py-2.5 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors;
+  }
+  
+  .navbar-dropdown-line {
+    @apply w-5 h-0.5 bg-gray-700;
+  }
+  
+  .navbar-mobile-dropdown {
+    @apply z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-56 absolute right-0 mt-2;
+  }
+  
+  .navbar-mobile-menu {
+    @apply py-2 text-sm text-gray-700;
+  }
+  
+  .navbar-mobile-link {
+    @apply block px-4 py-2 hover:bg-gray-100 transition-colors;
+  }
+  
+  .navbar-mobile-link-active {
+    @apply block px-4 py-2 hover:bg-gray-100 transition-colors bg-gray-50 font-semibold;
+  }
+  
+  .navbar-mobile-register {
+    @apply py-2;
+  }
+  
+  .navbar-mobile-register-link {
+    @apply block px-4 py-2 text-sm font-medium bg-gradient-to-r from-customBlue to-customGreen bg-clip-text text-transparent hover:bg-gray-100;
+  }
+  
+  .navbar-desktop-nav {
+    @apply hidden lg:flex flex-1 justify-center items-center gap-6 font-medium text-gray-600;
+  }
+  
+  .navbar-desktop-link {
+    @apply hover:text-primary-600 transition-colors;
+  }
+  
+  .navbar-desktop-link-active {
+    @apply bg-gradient-to-r from-customBlue to-customGreen bg-clip-text text-transparent font-semibold;
+  }
+  
+  .navbar-desktop-actions {
+    @apply hidden lg:flex items-center gap-3;
+  }
+  
+  .navbar-register-button {
+    @apply bg-gradient-to-r from-customBlue to-customGreen px-4 py-2 rounded-md text-sm text-white hover:opacity-90 transition-opacity;
+  }
+
   .nav-link {
     @apply text-gray-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 ease-smooth hover:scale-105 relative overflow-hidden rounded-lg;
   }
