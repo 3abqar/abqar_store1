@@ -14,90 +14,61 @@
   <body
     class="bg-gray-50 text-gray-900 antialiased font-inter overflow-x-hidden"
   >
-    <!--  Navbar -->
-    <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
-      <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-3">
+    <!--  Navbar using Tailwind Component Classes -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <div class="navbar-content">
+          <div class="navbar-logo-section">
             <img
               src="./src/assets/images/abqarLogo.png"
               alt="Abqar Store Sales"
-              class="h-12 sm:h-14 w-auto"
+              class="navbar-logo"
             />
           </div>
 
-          <div class="lg:hidden relative inline-block">
+          <div class="navbar-mobile-button">
             <button
               data-dropdown-toggle="mobileMenu"
-              class="inline-flex flex-col justify-center items-center gap-1.5 rounded-md bg-white px-3 py-2.5 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors"
+              class="navbar-dropdown"
               type="button"
             >
-              <span class="w-5 h-0.5 bg-gray-700"></span>
-              <span class="w-5 h-0.5 bg-gray-700"></span>
-              <span class="w-5 h-0.5 bg-gray-700"></span>
+              <span class="navbar-dropdown-line"></span>
+              <span class="navbar-dropdown-line"></span>
+              <span class="navbar-dropdown-line"></span>
             </button>
 
-            <!-- Dropdown Menu -->
-            <div
-              id="mobileMenu"
-              class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-56"
-            >
-              <ul class="py-2 text-sm text-gray-700">
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobileMenu" class="navbar-mobile-dropdown">
+              <ul class="navbar-mobile-menu">
                 <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+                  <a href="#" class="navbar-mobile-link-active">Home</a>
                 </li>
                 <li>
-                  <a href="#services" class="block px-4 py-2 hover:bg-gray-100"
-                    >Services</a
-                  >
+                  <a href="#services" class="navbar-mobile-link">Services</a>
                 </li>
                 <li>
-                  <a href="#about" class="block px-4 py-2 hover:bg-gray-100"
-                    >About</a
-                  >
+                  <a href="#about" class="navbar-mobile-link">About</a>
                 </li>
                 <li>
-                  <a href="#contact" class="block px-4 py-2 hover:bg-gray-100"
-                    >Contact</a
-                  >
+                  <a href="src/pages/contact.html" class="navbar-mobile-link">Contact</a>
                 </li>
               </ul>
-              <div class="py-2">
-                <a
-                  href="/src/pages/signup.html"
-                  class="block px-4 py-2 text-sm font-medium bg-gradient-to-r from-customBlue to-customGreen bg-clip-text text-transparent hover:bg-gray-100"
-                  >Register</a
-                >
+              <div class="navbar-mobile-register">
+                <a href="./src/pages/signup.html" class="navbar-mobile-register-link">Register</a>
               </div>
             </div>
           </div>
 
           <!-- Desktop Navigation -->
-          <nav
-            class="hidden lg:flex flex-1 justify-center items-center gap-6 font-medium text-gray-600"
-          >
-            <a
-              href="#"
-              class="bg-gradient-to-r from-customBlue to-customGreen bg-clip-text text-transparent font-semibold"
-              >Home</a
-            >
-            <a href="#services" class="hover:text-primary-600 transition-colors"
-              >Services</a
-            >
-            <a href="#about" class="hover:text-primary-600 transition-colors"
-              >About</a
-            >
-            <a href="#contact" class="hover:text-primary-600 transition-colors"
-              >Contact</a
-            >
+          <nav class="navbar-desktop-nav">
+            <a href="#" class="navbar-desktop-link-active">Home</a>
+            <a href="#services" class="navbar-desktop-link">Services</a>
+            <a href="#about" class="navbar-desktop-link">About</a>
+            <a href="src/pages/contact.html" class="navbar-desktop-link">Contact</a>
           </nav>
 
-          <div class="hidden lg:flex items-center gap-3">
-            <a
-              href="/src/pages/signup.html"
-              class="bg-gradient-to-r from-customBlue to-customGreen px-4 py-2 rounded-md text-sm text-white hover:opacity-90 transition-opacity"
-              >Register</a
-            >
+          <div class="navbar-desktop-actions">
+            <a href="./src/pages/signup.html" class="navbar-register-button">Register</a>
           </div>
         </div>
       </div>
@@ -811,7 +782,7 @@
       </div>
     </footer>
 
-    <script src="./src/pages/carousel.js"></script>
+    <script src="./src/pages/js/carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>
