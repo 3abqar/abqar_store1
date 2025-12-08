@@ -80,26 +80,5 @@
     </div>
 
     <script type="module" src="js/validation.js"></script>
-    <script type="module">
-      import { auth } from "../backend/auth_firebse.js";
-      import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-      const form = document.querySelector("form");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const email = form
-          .querySelector("input[placeholder='Email']")
-          .value.trim();
-
-        try {
-          await sendPasswordResetEmail(auth, email);
-          alert("📩 Reset email sent! Check your inbox.");
-        } catch (error) {
-          alert("⚠️ " + error.message);
-        }
-      });
-    </script>
   </body>
 </html>

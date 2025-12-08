@@ -59,45 +59,5 @@
         </button>
       </form>
     </div>
-
-    <!-- Firebase Password Reset  -->
-    <script type="module">
-      import { auth } from "../backend/firebase.js";
-      import {
-        confirmPasswordReset,
-        verifyPasswordResetCode,
-      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-      const form = document.querySelector("form");
-      const params = new URLSearchParams(window.location.search);
-      const oobCode = params.get("oobCode"); // الكود اللي جاي من لينك الإيميل
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const newPassword = form
-          .querySelector("input[placeholder='New Password']")
-          .value.trim();
-        const confirmPassword = form
-          .querySelector("input[placeholder='Confirm Password']")
-          .value.trim();
-
-        if (newPassword !== confirmPassword) {
-          alert("⚠️ Passwords do not match!");
-          return;
-        }
-
-        try {
-          await verifyPasswordResetCode(auth, oobCode);
-
-          await confirmPasswordReset(auth, oobCode, newPassword);
-
-          alert("✅ Password changed successfully!");
-          window.location.href = "signin.html";
-        } catch (error) {
-          alert("❌ " + error.message);
-        }
-      });
-    </script>
   </body>
 </html>
