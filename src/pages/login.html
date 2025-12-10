@@ -190,7 +190,7 @@
 
     <script type="module" src="js/validation.js"></script>
     <script type="module">
-      import { auth } from "../backend/firebase.js";
+      import { auth } from "../backend/auth_firebse.js";
       import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
       const form = document.querySelector("form");
@@ -208,7 +208,7 @@
         try {
           await signInWithEmailAndPassword(auth, email, password);
           alert("🎉 Login successful!");
-          window.location.href = "index.html";
+          window.location.href = "../../dashboard.html";
         } catch (error) {
           alert("⚠️ " + error.message);
         }

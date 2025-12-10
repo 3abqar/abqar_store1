@@ -205,7 +205,7 @@
 
     <script type="module" src="js/validation.js"></script>
     <script type="module">
-      import { auth } from "../backend/firebase.js";
+      import { auth } from "../backend/auth_firebse.js";
       import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
       const form = document.getElementById("signupForm");
@@ -226,7 +226,7 @@
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           alert("✅ Account created successfully!");
-          window.location.href = "signin.html";
+          window.location.href = "login.html";
         } catch (error) {
           alert("❌ " + error.message);
         }
